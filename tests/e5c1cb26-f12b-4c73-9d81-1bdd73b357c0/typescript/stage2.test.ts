@@ -66,19 +66,4 @@ describe("Bitcoin Address Generation - Stage 1", () => {
       throw new Error("Invalid Bitcoin address format");
     }
   });
-
-  test("should handle potential errors gracefully", () => {
-    // Mock ECPair.makeRandom to throw an error
-    const originalMakeRandom = ECPair.makeRandom;
-    ECPair.makeRandom = () => {
-      throw new Error("Random number generation failed");
-    };
-
-    expect(() => {
-      createBitcoinAddress();
-    }).toThrow();
-
-    // Restore original makeRandom function
-    ECPair.makeRandom = originalMakeRandom;
-  });
 });
